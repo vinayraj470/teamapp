@@ -1,10 +1,47 @@
+.team-card {
+  border-radius: 16px;
+  padding: 20px;
+  transition: transform 0.3s ease;
 
-.team-container{
-  margin-bottom: 1rem;
+  height: 420px;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.team-container ul {
-  border: 0.1rem solid rgb(128, 128, 128, 0.418);
+
+
+.team-title {
+  text-align: center;
+  color: #1565c0;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.team-members-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.team-members {
+  list-style: none;
+  padding: 0;
   margin: 0;
-  padding: 0.5rem;
+}
+
+.team-members li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #f5f9ff;
+  border-radius: 8px;
+  border-left: 4px solid #1976d2;
+}
+
+.team-count {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #1565c0;
 }

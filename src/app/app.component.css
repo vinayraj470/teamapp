@@ -1,63 +1,226 @@
 .container {
-  padding: 4rem;
-  width: 40rem;
-  margin: 0 auto;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(to right, #e3f2fd, #bbdefb);
 }
 
-h1 {
-  font-size: 3rem;
+.main-card {
+  max-width: 700px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1565c0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.member-list-section {
+  margin-bottom: 25px;
+}
+
+.section-title {
+  margin-bottom: 12px;
+  color: #1565c0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.members-preview {
+  min-height: 120px;
+  max-height: 250px;
+  overflow-y: auto;
+
+  border: 2px dashed #90caf9;
+  border-radius: 12px;
+  padding: 15px;
+  background: #f8fbff;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: flex-start;
+}
+
+.member-chip {
+  background: #1976d2;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.remove-btn {
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.remove-btn:hover {
+  color: #ffcdd2;
+}
+
+.empty-state {
+  color: #757575;
+  font-style: italic;
 }
 
 .list {
-  padding: 1rem;
-  width: 100%;
-  height: 10rem;
-  border: 0.1rem solid grey;
-  overflow: auto;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 15px;
+  list-style: none;
 }
 
-.add-members-container input {
-  border: none;
-  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.418);
-  margin-right: 0.5rem;
-  width: 100%;
-  display: flex;
+.list li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eeeeee;
 }
 
-.add-members-container button {
-  width: 100%;
-  border: none;
-  color: white;
-  font-weight: 400;
-  cursor: pointer;
-  background-color: rgb(0, 53, 139);
-  margin-top: 0.5rem;
+.list li:last-child {
+  border-bottom: none;
 }
 
+.member-count {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #1565c0;
+}
+
+.add-members-container,
 .input-container {
-  margin: 2rem 0;
+  margin-top: 20px;
+}
+
+.button-group {
   display: flex;
-  height: 2rem;
+  gap: 12px;
+  margin-top: 10px;
 }
 
-.input-container button {
-  width: 50%;
-  background-color: darkcyan;
-  border: none;
-  color: white;
-}
-
-.input-container input {
-  width: 50%;
-}
-
-.card {
-  padding: 2rem;
-  width: 100%;
+.button-group button,
+.add-members-container button {
+  min-width: 140px;
 }
 
 .error-msg {
   color: red;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.teams-container {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+button.add-btn {
+  background-color: #43a047 !important;
+  color: white !important;
+}
+
+button.generate-btn {
+  background-color: #1976d2 !important;
+  color: white !important;
+}
+
+button.reset-btn {
+  background-color: #e53935 !important;
+  color: white !important;
+}
+
+button.add-btn,
+button.generate-btn,
+button.reset-btn {
+  min-width: 160px;
+  height: 45px;
+  border-radius: 10px !important;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+button.add-btn:disabled {
+  background-color: #a5d6a7 !important;
+  color: white !important;
+  opacity: 0.7;
+}
+
+button.generate-btn:disabled {
+  background-color: #90caf9 !important;
+  color: white !important;
+  opacity: 0.7;
+}
+
+button.reset-btn:disabled {
+  background-color: #ef9a9a !important;
+  color: white !important;
+  opacity: 0.7;
+}
+
+.member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.clear-all-btn {
+  border: none;
+  background: #ef5350;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.clear-all-btn:hover {
+  background: #d32f2f;
 }
 
 
+.teams-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.generated-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1565c0;
+  margin: 0;
+}
+
+.back-btn {
+  border-radius: 10px !important;
+  height: 42px;
+}
+
+.header-space {
+  width: 180px;
+}

@@ -7,3 +7,6 @@ li {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,9 +1,10 @@
 import { Component, input, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-teams',
-  imports: [CommonModule],
+  imports: [CommonModule,MatCardModule],
   templateUrl: './teams.component.html',
   styleUrl: './teams.component.css'
 })

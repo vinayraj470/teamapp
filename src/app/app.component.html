@@ -1,39 +1,175 @@
 <div class="container">
-  <div class="ui card">
-    <h1>Team Generator</h1>
-    <ul class="list">
-      <li *ngFor="let member of members">{{ member }}</li>
-    </ul>
-  </div>
-  <div class="add-members-container">
-    <input
-      #addMemberInput
-      type="text"
-      placeholder="Name"
-      (input)="onInput(addMemberInput.value)"
-      [value]="newMemberName"
-    />
-    <button (click)="addmember()">Add</button>
-  </div>
-  <div class="input-container">
-    <input
-      #numberOfTeamsInput
-      type="number"
-      placeholder="# of team"
-      (input)="onNumberOfTeamsInput(numberOfTeamsInput.value)"
-      [value]="numberOfTeams"
-    />
-    <button (click)="generateTeams()">Generate</button>
+
+  <!-- GENERATOR SCREEN -->
+
+  <mat-card class="main-card" *ngIf="!showGeneratedTeams">
+
+    <h1 class="title">Team Generator</h1>
+
+    <div class="member-list-section">
+
+      <div class="member-header">
+
+        <h3 class="section-title">
+          Added Members
+        </h3>
+
+        <button
+          *ngIf="members.length > 0"
+          class="clear-all-btn"
+          (click)="clearAllMembers()">
+
+          Clear All
+
+        </button>
+
+      </div>
+
+      <div class="members-preview">
+
+        <div *ngIf="members.length === 0" class="empty-state">
+          No members added yet
+        </div>
+
+        <div
+          *ngFor="let member of members; let i = index"
+          class="member-chip">
+
+          <span>
+            {{ member | titlecase }}
+          </span>
+
+          <button
+            class="remove-btn"
+            (click)="removeMember(i)">
+            ×
+          </button>
+
+        </div>
+
+      </div>
+
+      <p class="member-count" *ngIf="members.length > 0">
+        Total Members: {{ members.length }}
+      </p>
+
+    </div>
+
+    <div class="add-members-container">
+
+      <mat-form-field appearance="outline" class="full-width">
+
+        <mat-label>Enter Members</mat-label>
+
+        <input
+          matInput
+          #addMemberInput
+          placeholder="Vinay, Guna, Raj"
+          (input)="onInput(addMemberInput.value)"
+          [value]="newMemberName"
+          (keyup.enter)="addmember()"
+        />
+
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="add-btn"
+        [disabled]="!newMemberName.trim()"
+        (click)="addmember()">
+
+        Add
+
+      </button>
+
+    </div>
+
+    <div class="input-container">
+
+      <mat-form-field appearance="outline" class="full-width">
+
+        <mat-label>No of Teams</mat-label>
+
+        <input
+          matInput
+          type="number"
+          #numberOfTeamsInput
+          (input)="onNumberOfTeamsInput(numberOfTeamsInput.value)"
+          [value]="numberOfTeams"
+          (keyup.enter)="generateTeams()"
+        />
+
+      </mat-form-field>
+
+      <div class="button-group">
+
+        <button
+          mat-raised-button
+          color="accent"
+          class="generate-btn"
+          [disabled]="!numberOfTeams || members.length === 0"
+          (click)="generateTeams()">
+
+          Generate
+
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          class="reset-btn"
+          *ngIf="teams.length > 0"
+          (click)="resetApplication()">
+
+          Start Over
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <p *ngIf="errorMessage" class="error-msg">
+      {{ errorMessage }}
+    </p>
+
+  </mat-card>
+
+  <!-- TEAMS SCREEN -->
+
+<div *ngIf="showGeneratedTeams" class="generated-teams-wrapper">
+
+<div class="teams-header">
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="back-btn"
+    (click)="backToGenerator()">
+
+     Back To Generator
+
+  </button>
+
+  <h1 class="generated-title">
+    Generated Teams
+  </h1>
+
+  <div class="header-space"></div>
+
+</div>
+
+  <div class="teams-container">
+
+    <app-teams
+      *ngFor="let team of teams; let i = index"
+      [team]="team"
+      [index]="i">
+    </app-teams>
+
   </div>
 
-  <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+</div>
 
-  <div *ngIf="teams.length" class="teams-container">
-
-<app-teams 
-*ngFor="let team of teams; let i=index"
-[team]="team"
-[index]="i">
-</app-teams>
-  </div>
 </div>

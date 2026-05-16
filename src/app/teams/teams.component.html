@@ -1,6 +1,23 @@
-    <div class="team-container">
-        <h3>Team {{index+1}} </h3>
-        <ul>
-            <li *ngFor="let member of team">{{member | titlecase}}</li> 
-        </ul>
-    </div>
+<mat-card class="team-card">
+
+  <h2 class="team-title">
+    Team {{ index + 1 }}
+  </h2>
+
+  <div class="team-members-container">
+
+    <ul class="team-members">
+
+      <li *ngFor="let member of team">
+        {{ member | titlecase }}
+      </li>
+
+    </ul>
+
+  </div>
+
+  <p class="team-count">
+    Members: {{ team.length }}
+  </p>
+
+</mat-card>
